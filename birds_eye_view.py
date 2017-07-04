@@ -15,7 +15,7 @@ auth.set_access_token(access_token, access_token_secret)
 key_word = input("Enter keyword to search: ")
 api = tweepy.API(auth)
 
-public_tweets = api.search(key_word)
+public_tweets = api.search(q=key_word, count=1000)
 
 for tweet in public_tweets:
     print(tweet.text)
