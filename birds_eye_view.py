@@ -12,13 +12,20 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
 
-key_word = input("Enter keyword to search: ")
+#key_word = input("Enter keyword to search: ")
 api = tweepy.API(auth)
+
+
 
 public_tweets = api.search(q=key_word, count=1000)
 
-for tweet in public_tweets:
-    print(tweet.text)
-    analysis = TextBlob(tweet.text)
-    print(analysis.sentiment)
+US_WOEID = 23424977
+
+us_trending_topics = api.trends_place(23424977)
+print(us_trending_topics)
+
+# for tweet in public_tweets:
+#     print(tweet.text)
+#     analysis = TextBlob(tweet.text)
+#     print(analysis.sentiment)
 
