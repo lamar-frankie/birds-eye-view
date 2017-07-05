@@ -33,15 +33,22 @@ def get_trends():
     data = us_trending_topics[0]
     trends = data['trends']
     names = [trend['name'] for trend in trends]
-    return names
+    top_ten_trends = names[:10]
+    return top_ten_trends
+
+print(get_trends())
 
 
-def scrub_trends():
+def scrub_trends(dict_of_trends):
     scrubbed_trends = get_trends()
     for trend in scrubbed_trends:
         if trend[0] == '#':
             scrubbed_trends.remove(trend)
     return scrubbed_trends
+
+def analyze_trends(list_of_trends):
+    for trend in list_of_trends:
+        list_of_tweets_about_trend = api.search(q=trend, count=1000)
 
 
 
